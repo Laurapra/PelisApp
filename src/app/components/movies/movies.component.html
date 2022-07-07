@@ -1,0 +1,14 @@
+<div class="app">
+  <h1>Listado de películas</h1>
+  <div class="search">
+    <!--#search es una variable local y es una manera de resolver la consulta-->
+    <input type="text" #movieSearchInput placeholder="Buscar película">
+    
+  </div>
+  <div *ngIf="(movies$ | async) as movies; else empty" class="container">
+    <app-card-movie *ngFor="let movie of movies" [movie]="movie"></app-card-movie>
+  </div>
+  <ng-template #empty class="empty" >
+    <h3>No se encontraron resultados</h3>
+  </ng-template>
+</div>
